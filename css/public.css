@@ -1,0 +1,289 @@
+* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			text-decoration: none;
+			font-weight: 520;
+			font-family: 微软雅黑;
+		}
+
+		.backColor {
+			background-color: rgb(212, 235, 175);
+		}
+
+
+
+		
+
+		.navigation {
+			position: fixed;
+			top: 0;
+			z-index: 999;
+			width: 100%;
+			height: 72px;
+			margin: auto;
+			background-color: white;
+		}
+		.compangLogo{
+			display: inline-block;
+			float: left;
+			width: 20%;
+			height: 100%
+		}
+		.navigationBar {
+			display: inline-block;
+			float: right;
+			width: 80%;
+			height: 100%
+		}
+		.navigationBarLi{
+			display: inline-block;
+			float: left;
+			width: 25%;
+			height: 100%
+		}
+
+		.index {
+			margin: 0 padding: 0;
+			
+			height: 800px;
+		}
+		.indexImgCenter {
+			padding-top: 100px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 250px;
+			width: 100%;
+			background-image: url('../img/imgCenter.jpg');
+			background-size: 100% 100%;
+		}
+
+		.indexImgCenterText {
+			text-align: center;
+			font-size: 50px;
+			font-weight: bold;
+			color: rgb(252, 245, 235);
+		}
+
+		.companySlogen {
+			color: rgb(27, 118, 53);
+			font-size: 25px;
+			text-align: center;
+			padding-top: 70px;
+		}
+
+		.startNow {
+			padding-top: 70px;
+			text-align: center;
+		}
+
+		.btnContent {
+			width: 200px;
+			height: 40px;
+			background-color: rgb(94, 197, 126);
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 20px;
+			border: 0px;
+			color: white;
+		}
+
+
+		.productsAndServices {
+			margin: 0;
+			/* padding: 150px; */
+			height: 800px;
+			position: relative;
+		}
+
+		.title {
+			text-align: center;
+			font-size: 50px;
+			font-weight: bold;
+			color: rgb(27, 118, 53);
+		}
+
+		.product {
+			padding-top: 40px;
+			height: 60%;
+			width: 100%;
+		}
+
+		.product1 {
+			display: inline-block;
+			float: left;
+			width: 50%;
+			height: 100%;
+			background-color: rgb(212, 235, 175);
+		}
+
+		.product2 {
+			display: inline-block;
+			float: right;
+			width: 50%;
+			height: 100%;
+			background-color: rgb(175, 205, 126);
+		}
+
+		.productionTitle {
+			padding-top: 20px;
+			font-size: 35px;
+			color: rgb(27, 118, 53);
+			text-align: center;
+		}
+
+		.productionContent {
+			margin: auto;
+			padding-top: 20%;
+			width: 80%;
+			font-size: 20px;
+			color: rgb(27, 118, 53);
+		}
+
+
+		.classicCase {
+			margin: 0;
+			/* padding: 150px; */
+			height: 800px;
+			position: relative;
+
+		}
+
+		.classicCaseImgCenter {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 250px;
+			width: 100%;
+			background-image: url('../img/classicCase.jpg');
+			background-size: 100% 100%;
+		}
+
+		.classicCaseImgCenter {
+			font-size: 50px;
+			font-weight: bold;
+			color: rgb(252, 245, 235);
+			letter-spacing: 20px;
+		}
+
+
+		.companyProfile {
+			margin: 0;
+			/* padding: 150px; */
+			height: 800px;
+			width: auto;
+			position: relative;
+		}
+
+		.companyProfileImgCenter {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			height: 250px;
+			width: 100%;
+			background-image: url('../img/companyProfile.jpg');
+			background-size: 100% 100%;
+		}
+
+		.companyProfileImgCenter {
+			text-align: center;
+			font-size: 50px;
+			font-weight: bold;
+			color: rgb(252, 245, 235);
+			letter-spacing: 20px;
+		}
+
+
+
+
+		.consultingCenter {
+			margin: 0;
+			/* padding: 150px; */
+			height: 800px;
+			width: auto;
+			position: relative;
+		}
+
+		.consultingCenterImgCenter {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			height: 250px;
+			width: 100%;
+			background-image: url('../img/consultingCenter.jpg');
+			background-size: 100% 100%;
+		}
+
+		.consultingCenterImgCenter {
+			text-align: center;
+			font-size: 50px;
+			font-weight: bold;
+			color: rgb(252, 245, 235);
+			letter-spacing: 20px;
+		}
+
+
+
+		.others {
+			position: absolute;
+			width: 100%;
+			height: 60px;
+
+			text-align: center;
+		}
+
+		.links {
+			display: inline-block;
+			float: left;
+			width: 25%;
+			height: 100%;
+			background-color: rgb(151, 180, 104);
+		}
+
+		.news {
+			display: inline-block;
+			float: left;
+			width: 25%;
+			height: 100%;
+			background-color: rgb(107, 138, 82);
+		}
+
+		.policiesAndRegulations {
+			display: inline-block;
+			float: left;
+			width: 25%;
+			height: 100%;
+			background-color: rgb(72, 101, 63);
+		}
+
+		.cooperationAndExchange {
+			display: inline-block;
+			float: left;
+			width: 25%;
+			height: 100%;
+			background-color: rgb(48, 74, 54);
+		}
+		
+		
+		
+		.others{
+			padding: 0;
+			margin: 0;
+			padding-bottom: 100px;
+		}
+		.othersTitle {
+			position: relative;
+			top: 10px;
+			color: white;
+			font-size: 30px;
+			
+		}
+		
+		.othersLi{
+			text-align: left;
+			padding: 5px;
+			color: black;
+		}

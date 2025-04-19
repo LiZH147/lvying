@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>主页</title>
+</head>
+
+<body class="backColor">
+
+	<div class="navigation">
+		<div class="compangLogo" onclick="gotoIndex()"><img src="img/Company Name1.jpg" class="companyImg" /></div>
+		<div class="navigationBar">
+			<div class="navigationBarLi"><a href="./pages/productsAndServices.html"
+					class="navigationBarContent">产品与服务</a>
+			</div>
+			<div class="navigationBarLi"><a href="./pages/classicCase.html" class="navigationBarContent">典型案例</a></div>
+			<div class="navigationBarLi"><a href="./pages/consultingCenter.html" class="navigationBarContent">咨询中心</a>
+			</div>
+			<div class="navigationBarLi"><a href="./pages/companyProfile.html" class="navigationBarContent">公司简介</a>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="index">
+		<div class="startNow">
+			<a href="./pages/productsAndServices.html">
+				<button class="btnContent">立即使用</button>
+			</a>
+		</div>
+	</div>
+
+
+
+	<!-- <div class="productsAndServices">
+		<div class="title">
+			产品与服务
+		</div>
+		<div class="product">
+			<div class="product1" onclick="gotoProduction1()">
+				<div class="productionTitle">产品一</div>
+				<div class="productionContent">因为具体的两个产品还没给出来，我们就先搭个框架吧。这两个色块也是可以点进去，跳转到具体产品操作界面的
+				</div>
+			</div>
+			<div class="product2">
+				<div class="productionTitle">产品二</div>
+				<div class="productionContent">因为具体的两个产品还没给出来，我们就先搭个框架吧。这两个色块也是可以点进去，跳转到具体产品操作界面的
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="classicCase">
+		<div class="classicCaseImgCenter">
+			<a class="classicCaseImgCenterText">典型案例</a>
+		</div>
+	</div>
+
+
+	<div class="companyProfile">
+		<div class="companyProfileImgCenter">
+			<a class="companyProfileImgCenterText">公司简介</a>
+		</div>
+	</div>
+
+
+
+	<div class="consultingCenter">
+		<div class="consultingCenterImgCenter">
+			<a class="consultingCenterImgCenterText">咨 讯 中 心</a>
+		</div>
+	</div> -->
+
+
+	<div class="others">
+		<div class="links">
+			<div class="othersTitle">友情链接</div>
+			<ul style="padding: 30px;">
+				<li class="othersLi"><a href="http://www.tanjiaoyi.com" style="color: black">中国碳交易网</a></li>
+				<li class="othersLi"><a href="http://www.tanpaifang.com" style="color: black">中国碳排放交易网</a></li>
+				<li class="othersLi"><a href="https://www.xemas.com.cn" style="color: black">厦门产权交易中心</a></li>
+				<li class="othersLi"><a href="http://www.lianmenhu.com/qukuailian-7104" style="color: black">易碳家</a>
+				</li>
+				<li class="othersLi"><a href="http://www.tanguwen.com" style="color: black">碳管家</a></li>
+				<li class="othersLi"><a href="http://www.caepi.org.cn" style="color: black">中国环境保护产业协会</a></li>
+			</ul>
+		</div>
+
+		<div class="news">
+			<div class="othersTitle">行业新闻</div>
+			<ul style="padding: 30px;">
+				<li class="othersLi">电影碳中和实践</li>
+				<li class="othersLi">乡村碳汇交易现状</li>
+			</ul>
+		</div>
+
+		<div class="policiesAndRegulations">
+			<div class="othersTitle">政策法规</div>
+			<ul style="padding: 30px;">
+				<li class="othersLi"><a href="http://www.gov.cn/zhengce/2021-10/24/content_5644613.htm"
+						style="color: black">中共中央 国务院关于完整准确全面贯彻新发展理念做好碳达峰碳中和工作的意见</a></li>
+				<li class="othersLi"><a href="http://www.gov.cn/zhengce/content/2022-05/30/content_5693013.htm"
+						style="color: black">国务院办公厅转发国家发展改革委国家能源局关于促进新时代新能源高质量发展实施方案</a></li>
+				<li class="othersLi"><a href="https://www.vecarbon.com/messageDetail?id=1471838150778177937"
+						style="color: black">教育部关于印发《加强碳达峰碳中和高等教育人才培养体系建设工作方案》的通知</a></li>
+			</ul>
+		</div>
+
+		<div class="cooperationAndExchange">
+			<div class="othersTitle">合作交流</div>
+			<ul style="padding: 30px;">
+				<li class="othersLi"><a href="./pages/companyProfile.html" style="color: black">关于</a></li>
+				<li class="othersLi"><img src="img/phone.gif" />12345678910</li>
+				<li class="othersLi"><img src="img/email.gif">12345678910@163.com</li>
+				<li class="othersLi"><img src="img/wechat.gif"></li>
+			</ul>
+		</div>
+	</div>
+</body>
+<style lang="en">
+	* {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		text-decoration: none;
+		font-weight: 520;
+		font-family: 微软雅黑;
+	}
+
+	.backColor {
+		background-color: rgb(212, 235, 175);
+	}
+
+
+
+
+
+	.navigation {
+		position: fixed;
+		top: 0;
+		z-index: 999;
+		width: 100%;
+		height: 72px;
+		margin: auto;
+		background-color: white;
+	}
+
+	.compangLogo {
+		display: inline-block;
+		float: left;
+		width: 20%;
+		height: 100%
+	}
+
+	.navigationBar {
+		display: inline-block;
+		float: right;
+		width: 80%;
+		height: 100%
+	}
+
+	.navigationBarLi {
+		display: inline-block;
+		float: left;
+		width: 25%;
+		height: 100%
+	}
+
+
+	.navigationBarContent {
+		text-align: center;
+		line-height: 72px;
+		font-size: 20px;
+		color: rgb(27, 118, 53);
+		font-weight: bold;
+	}
+
+
+	.index {
+		margin-top: 50px;
+		padding: 0px;
+		background-size: 100%;
+		background-image: url('img/backg.gif');
+		height: 650px;
+	}
+
+	.startNow {
+		padding-top: 550px;
+		text-align: center;
+	}
+
+	.btnContent {
+		width: 200px;
+		height: 40px;
+		background-color: rgb(94, 197, 126);
+		font-size: 20px;
+		font-weight: bold;
+		border-radius: 20px;
+		border: 0px;
+		color: white;
+	}
+
+
+	.productsAndServices {
+		margin: 0;
+		/* padding: 150px; */
+		height: 800px;
+		position: relative;
+	}
+
+	.title {
+		text-align: center;
+		font-size: 50px;
+		font-weight: bold;
+		color: rgb(27, 118, 53);
+	}
+
+	.product {
+		padding-top: 40px;
+		height: 60%;
+		width: 100%;
+	}
+
+	.product1 {
+		display: inline-block;
+		float: left;
+		width: 50%;
+		height: 100%;
+		background-color: rgb(212, 235, 175);
+	}
+
+	.product2 {
+		display: inline-block;
+		float: right;
+		width: 50%;
+		height: 100%;
+		background-color: rgb(175, 205, 126);
+	}
+
+	.productionTitle {
+		padding-top: 20px;
+		font-size: 35px;
+		color: rgb(27, 118, 53);
+		text-align: center;
+	}
+
+	.productionContent {
+		margin: auto;
+		padding-top: 20%;
+		width: 80%;
+		font-size: 20px;
+		color: rgb(27, 118, 53);
+	}
+
+
+	.classicCase {
+		margin: 0;
+		/* padding: 150px; */
+		height: 800px;
+		position: relative;
+
+	}
+
+	.classicCaseImgCenter {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 250px;
+		width: 100%;
+		background-image: url('img/classicCase.jpg');
+		background-size: 100% 100%;
+	}
+
+	.classicCaseImgCenter {
+		font-size: 50px;
+		font-weight: bold;
+		color: rgb(252, 245, 235);
+		letter-spacing: 20px;
+	}
+
+
+	.companyProfile {
+		margin: 0;
+		/* padding: 150px; */
+		height: 800px;
+		width: auto;
+		position: relative;
+	}
+
+	.companyProfileImgCenter {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		height: 250px;
+		width: 100%;
+		background-image: url('img/companyProfile.jpg');
+		background-size: 100% 100%;
+	}
+
+	.companyProfileImgCenter {
+		text-align: center;
+		font-size: 50px;
+		font-weight: bold;
+		color: rgb(252, 245, 235);
+		letter-spacing: 20px;
+	}
+
+
+
+
+	.consultingCenter {
+		margin: 0;
+		/* padding: 150px; */
+		height: 800px;
+		width: auto;
+		position: relative;
+	}
+
+	.consultingCenterImgCenter {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		height: 250px;
+		width: 100%;
+		background-image: url('img/consultingCenter.jpg');
+		background-size: 100% 100%;
+	}
+
+	.consultingCenterImgCenter {
+		text-align: center;
+		font-size: 50px;
+		font-weight: bold;
+		color: rgb(252, 245, 235);
+		letter-spacing: 20px;
+	}
+
+
+
+	.others {
+		position: absolute;
+		width: 100%;
+		height: 60px;
+
+		text-align: center;
+	}
+
+	.links {
+		display: inline-block;
+		float: left;
+		width: 25%;
+		height: 100%;
+		background-color: rgb(151, 180, 104);
+	}
+
+	.news {
+		display: inline-block;
+		float: left;
+		width: 25%;
+		height: 100%;
+		background-color: rgb(107, 138, 82);
+	}
+
+	.policiesAndRegulations {
+		display: inline-block;
+		float: left;
+		width: 25%;
+		height: 100%;
+		background-color: rgb(72, 101, 63);
+	}
+
+	.cooperationAndExchange {
+		display: inline-block;
+		float: left;
+		width: 25%;
+		height: 100%;
+		background-color: rgb(48, 74, 54);
+	}
+
+
+
+	.others {
+		padding: 0;
+		margin: 0;
+		padding-bottom: 100px;
+	}
+
+	.othersTitle {
+		position: relative;
+		top: 10px;
+		color: white;
+		font-size: 30px;
+
+	}
+
+	.othersLi {
+		text-align: left;
+		padding: 5px;
+		color: black;
+	}
+</style>
+
+</html>
+<script src="js/goto.js">
+
+</script>

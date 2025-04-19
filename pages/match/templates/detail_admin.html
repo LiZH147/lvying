@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>问卷详情</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        {% if forms %}
+        <form method="POST" action="/recommendations/{{ id }}">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>联系方式</th>
+                        <th>处理状态</th>
+                        <th>提交时间</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for form in forms %}
+                    <tr>
+                        <td>{{ form.id }}</td>
+                        <td>{{ form.contact_information }}</td>
+                        <td>
+                            {% if form.processing_status == 0 %}
+                            处理中
+                            {% elif form.processing_status ==1 %}
+                            已处理
+                            {% endif %}
+                        </td>
+                        <td>{{ form.submission_time }}</td>
+                       
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% for form in forms %}
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">问卷内容</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="序号">序号</th>
+            
+                                <th scope="col">问题</th>
+                                <th scope="col">回答</th>
+            
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for answer in form.answer %}
+                            <tr>
+                                <td>{{loop.index}}</td>
+            
+                                <td>{{ answer.question }}</td>
+                                <td>{{ answer.content }}</td>
+            
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">AI智能推荐</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">选择</th>
+                                <th scope="col">名称</th>
+                                <th scope="col">类型</th>
+                                <th scope="col">地址</th>
+                                <th scope="col">建筑风格</th>
+                                <th scope="col">取景影视</th>
+                                <th scope="col">推荐指数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for base in ai_recommendations %}
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="bases" value="{{ base }}" id="{{ base }}">
+                                        <label class="form-check-label" for="{{ base }}"></label>
+                                    </div>
+                                </td>
+                                <td>{{ base.Name }}</td>
+                                <td>{{ base.Type }}</td>
+                                <td>{{ base.Position }}</td>
+                                <td>{{ base.Architectural_Design }}</td>
+                                <td>{{ base.Composition }}</td>
+                                <td>
+                                    <div class="star-rating" {% if not base.is_selected %} style="pointer-events:none;" {% endif %}>
+                                        {% for i in range(0, base.Recommendations) %}
+                                        <span class="star">&#9733;</span>
+                                        {% endfor %}
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">所有影视基地</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">选择</th>
+                                <th scope="col">名称</th>
+                                <th scope="col">类型</th>
+                                <th scope="col">地址</th>
+                                <th scope="col">建筑风格</th>
+                                <th scope="col">取景影视</th>
+                                <th scope="col">推荐指数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for base in bases %}
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="bases" value="{{ base }}"
+                                            id="{{ base }}">
+                                        <label class="form-check-label" for="{{ base }}"></label>
+                                    </div>
+                                </td>
+                                <td>{{ base.Name }}</td>
+                                <td>{{ base.Type }}</td>
+                                <td>{{ base.Position }}</td>
+                                <td>{{ base.Architectural_Design }}</td>
+                                <td>{{ base.Composition }}</td>
+                                <td>
+                                    <div class="star-rating"  {% if not base.is_selected %}
+                                        style="pointer-events:none;" {% endif %}>
+                                        {% for i in range(1, 6) %}
+                                            <span class="star">&#9733;</span>
+                                        {% endfor %}
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <style>
+               
+                 .star {
+            color: #f6e58d;
+            font-size: 20px;
+            }
+                
+            </style>
+            
+                <script>
+                    $(document).ready(function () {
+                        $('.star-rating .fas.fa-star').click(function () {
+                            var starValue = $(this).data('star-value');
+                            var baseId = $(this).closest('.star-rating').data('base-id');
+                            // 将 starValue 和 baseId 发送到后端进行评分操作
+                            console.log('评分: ' + starValue + ', 基地 ID: ' + baseId);
+                        });
+
+                        $('input[name="base_ids"]').change(function () {
+                            var isChecked = $(this).is(':checked');
+                            var parentRow = $(this).closest('tr');
+                            var starRating = parentRow.find('.star-rating');
+                            if (isChecked) {
+                                starRating.css('pointer-events', 'auto');
+                                starRating.find('.fas.fa-star').css('color', '#aaa');
+                            } else {
+                                starRating.css('pointer-events', 'none');
+                                starRating.find('.fas.fa-star').css('color', 'gray');
+                            }
+                        });
+                    });
+                </script>
+            <style>
+                
+            
+                .star-rating {
+                    position: relative;
+                    display: inline-block;
+                    cursor: pointer;
+                }
+            
+                .star-rating .fas.fa-star {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    color: #aaa;
+                    transition: color 0.2s ease-in-out;
+                }
+            
+                .star-rating .fas.fa-star.active,
+                .star-rating:hover .fas.fa-star {
+                    color: #f39c12;
+                }
+            </style>
+            
+       
+            
+           
+            <button type="submit" class="btn btn-primary mt-4">提交</button>
+        </form>
+
+        {% else %}
+        <div class="alert alert-warning" role="alert">
+            暂未查询到相关数据
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Add Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

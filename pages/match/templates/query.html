@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact Info Query</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .query-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 500px;
+            margin-top: 50px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>问卷状态查询</h1>
+    <div class="query-container">
+        <form action="/query" method="post">
+            <label for="contact_info">请输入您的联系方式:</label>
+            <input type="text" id="contact_info" name="contact_info">
+            <input type="submit" value="提交">
+        </form>
+        {% if results %}
+        <ul>
+            {% for result in results %}
+            <li>
+                <span>ID: {{ result['id'] }}</span>
+                <!--<span>联系方式: {{ result['contact_information'] }}</span>-->
+                <span>提交时间: {{ result['submission_time'] }}</span>
+                {% if result['processing_status'] == 0 %}
+                <span>处理状态: 处理中</span>
+                {% else %}
+                <span>处理状态: 已处理</span>
+                {% endif %}
+                <a href="/detail/{{ result['id'] }}">详情</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        {% if submitted %}
+        <p>未查询到相关结果，请您填写问卷后再来查询！</p>
+        {% endif %}
+        {% endif %}
+    </div>
+</body>
+
+</html>

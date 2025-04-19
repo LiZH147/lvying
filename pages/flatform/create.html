@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="templatemo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <title>影视资源交流平台 - 上传资源</title>
+    <!-- Bootstrap core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="static/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="static/assets/css/templatemo-liberty-market.css">
+    <link rel="stylesheet" href="static/assets/css/owl.css">
+    <link rel="stylesheet" href="static/assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="static/assets/images/Company Name1.jpg" alt="">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="index.html">主页</a></li>
+                            <li><a href="explore.html">探索</a></li>
+                            <li><a href="create.html" class="active">上传资源</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>菜单</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <div class="page-heading normal-space">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6>上传资源</h6>
+                    <h2>分享你的影视资源</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="item-details-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h2>填写 <em>资源信息</em> 开始分享。</h2>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <form id="create-form" class="create-form">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <label for="name">资源名称 </label>
+                                    <span></span>
+                                    <input type="text" name="name" id="name" placeholder="输入资源名称" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <label for="cate">资源类别</label>
+                                    <select name="cate" id="cate" required>
+                                        <option value="">选择类别</option>
+                                        <option value="monitor">监控设备</option>
+                                        <option value="camera">摄像设备</option>
+                                        <option value="music">音乐版权</option>
+                                        <option value="venue">拍摄场地</option>
+                                        <option value="valuables">贵重物品</option>
+                                        <option value="others">其他</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <label for="price">租金（元/天）</label>
+                                    <input type="number" name="price" id="price" placeholder="输入租金" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <label for="contact">联系方式</label>
+                                    <input style="height: 100px;" type="text" name="contact" id="contact"
+                                        placeholder="输入联系方式" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <label for="des">资源描述</label>
+                                    <textarea name="des" id="des" placeholder="详细描述你的资源..." required></textarea>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <button type="button" class="orange-button" onclick="submitResource()">提交资源</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright © 2024 影视资源交流平台</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/assets/js/isotope.min.js"></script>
+    <script src="static/assets/js/owl-carousel.js"></script>
+    <script src="static/assets/js/tabs.js"></script>
+    <script src="static/assets/js/popup.js"></script>
+    <script src="static/assets/js/custom.js"></script>
+
+    <script>
+        function submitResource() {
+            // 获取表单数据
+            const formData = {
+                name: document.getElementById('name').value,
+                cate: document.getElementById('cate').value,
+                price: document.getElementById('price').value,
+                contact: document.getElementById('contact').value,
+                des: document.getElementById('des').value
+            };
+
+            // 在实际应用中，这里应该发送数据到服务器
+            // 这个静态版本中，我们只显示一个提示
+            alert('此功能在静态版本中不可用。这需要后端支持。\n\n您输入的数据：\n' + JSON.stringify(formData, null, 2));
+        }
+    </script>
+</body>
+
+</html>

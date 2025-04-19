@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ESGtest</title>
+		<!-- //for-mobile-apps -->
+		<link href='//fonts.googleapis.com/css?family=Amaranth:400,400italic,700,700italic' rel='stylesheet'
+			type='text/css'>
+		<link
+			href='//fonts.googleapis.com/css?family=Josefin+Slab:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic'
+			rel='stylesheet' type='text/css'>
+		<link
+			href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+			rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div class="test">
+			<h1>ESG&nbsp;Evaluation</h1>
+			<div id="showTable" class="table-container">
+				<table border="0" id="my-table">
+					<tbody>
+						<tr>
+							<td colspan="2">
+								<div>
+									<input type="number" required="required" placeholder="请输入碳排放总量" name="u"
+										onfocus="if(placeholder=='请输入碳排放总量'){placeholder=''}"
+										onblur="if(placeholder==''){placeholder='请输入碳排放总量'}">
+								</div>
+							</td>
+						</tr>
+						<script src="../js/ESGtest.js"></script>
+						<tr>
+							<td colspan="2">
+								<form id="myForm">
+									<input type="submit" value="显示测评结果">
+								</form>
+								<!-- 弹窗 -->
+								<div id="myModal" class="modal">
+									<div class="modal-content">
+										<span class="close">&times;</span>
+										<p id="result"></p>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background: rgb(155, 186, 106);
+			font-family: 'Open Sans', sans-serif !important;
+		}
+
+		.test h1 {
+			color: #fff;
+			font-size: 40px;
+			text-align: center;
+			letter-spacing: 1px;
+			font-family: 'Amaranth', sans-serif;
+		}
+
+		.testTitle {
+			color: #ff7700;
+			margin-bottom: 8px;
+			font-size: 19px;
+			font-family: 'Josefin Slab', serif;
+			font-weight: 600;
+		}
+
+		::-webkit-input-placeholder {
+			color: rgb(197, 197, 197);
+			font-size: 15px;
+		}
+
+		img {
+			margin-right: 10px;
+		}
+
+		.table-container {
+			background-color: rgb(212, 233, 174);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 50%;
+			margin: 0 auto;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		}
+
+		table {
+			padding-top: 10px;
+			padding-left: 50px;
+			padding-right: 10px;
+			/* optional styling for the table */
+			border-collapse: separate;
+			border-spacing: 0;
+			/* optional */
+			background-color: white;
+			width: 75%;
+		}
+
+		td {
+			text-align: center;
+		}
+
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background: rgba(0, 0, 0, 0.4);
+		}
+
+		.modal-content {
+			background-color: rgb(212, 233, 174);
+			margin: 15% auto;
+			padding: 20px;
+			border: 1px solid #888;
+			border-radius: 5px;
+			width: 30%;
+			text-align: center;
+		}
+
+		.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+	<link rel="stylesheet" href="../css/ESGtest.css" />
+	<script>
+		const form = document.getElementById('myForm');
+		const modal = document.getElementById('myModal');
+		const closeBtn = document.getElementsByClassName('close')[0];
+		var CO2out = document.getElementsByName('u');
+
+		var ESGIndex = [
+			[9, 10, -2],
+			[7, 8, -4],
+			[5, 6, -6],
+			[3, 4, -8],
+			[1, 2, -10]
+		];
+		// console.log(ESGIndex)
+		function calESG(i) {
+			let t = ~~(i / 800);
+			var res = [0, 0];
+			console.log(t);
+			for (var j = 0; j < data.length - 1; j++) {
+				res[0] += ESGIndex[t][0] * data[j].score;
+				res[1] += ESGIndex[t][1] * data[j].score;
+			}
+			res[0] += ESGIndex[t][2] * data[data.length - 1].score;
+			res[1] += ESGIndex[t][2] * data[data.length - 1].score;
+			return res;
+		}
+
+		form.addEventListener('submit', function(event) {
+			event.preventDefault(); // 阻止表单的默认提交行为
+			console.log(CO2out[0].value)
+			var res = [0, 0];
+			this.res = calESG(CO2out[0].value)
+			console.log(this.res)
+
+			var buyESG = "ESG购买碳汇评分：" + this.res[0] + "分";
+			var notbuyESG = "ESG不购买碳汇评分：" + this.res[1] + "分";
+			if (this.res[0] != 0 && this.res[1] != 0) {
+				document.getElementById('result').innerHTML = buyESG + '<br/>' + notbuyESG;
+			} else {
+				document.getElementById('result').innerHTML = "请检查是否有遗漏选项";
+			}
+			modal.style.display = 'block'; // 显示弹窗
+		});
+
+		closeBtn.addEventListener('click', function() {
+			modal.style.display = 'none'; // 隐藏弹窗
+		});
+	</script>
+</html>

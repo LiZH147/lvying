@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>影视基地匹配与对接</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        .star {
+            color: #f6e58d;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="my-5">影视基地匹配与对接 - 推荐结果</h1>
+        <p>以下是根据您的填写生成的影视基地推荐：</p>
+        <ul>
+            {% for recommendation in recommendations %}
+            <li>
+                <h4>{{ loop.index }}. {{ recommendation['Name'] }} {% for i in range(recommendation['Recommendation'])
+                    %}<span class="star">&#9733;</span>{% endfor %}</h4>
+                <p>类型：{{ recommendation['Type'] }}</p>
+                <p>地址：{{ recommendation['Position'] }}</p>
+                {% if recommendation['Advantage'] %}
+                <p>优点：</p>
+                <ul>
+                    <li>{{ recommendation['Advantage'] }}</li>
+                </ul>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>

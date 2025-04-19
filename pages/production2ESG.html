@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>ESG测评</title>
+</head>
+
+<body>
+	<div class="title">ESG评级报告</div>
+	<div class="startTest">
+		<button class="butESG" onclick="gotoESTtest()">开始测评</button>
+	</div>
+	<div class="content">
+		<div class="contentTest">
+			<img src="../img/ESG/ESG1.png" />
+			<ul class="contentTestUl">
+				<li>碳及温室气体排放</li>
+				<li>环境政策</li>
+				<li>废物污染及管理政策</li>
+				<li>能源使用</li>
+				<li>自然资源使用和管理政策</li>
+				<li>员工环境意识</li>
+				<li>绿色技术</li>
+			</ul>
+		</div>
+		<div class="contentTest">
+			<img src="../img/ESG/ESG2.png" />
+			<ul class="contentTestUl">
+				<li>精准扶贫与乡村振兴</li>
+				<li>人权政策及违反情况</li>
+				<li>公益慈善及其他</li>
+				<li>社会效益与经济效益的统一性</li>
+			</ul>
+		</div>
+		<div class="contentTest">
+			<img src="../img/ESG/ESG3.png" />
+			<ul class="contentTestUl">
+				<li>公司治理</li>
+				<li>贪污受贿政策</li>
+				<li>反不公平竞争</li>
+				<li>风险管理</li>
+				<li>税收透明</li>
+				<li>道德行为准则合规性</li>
+				<li>董事会独立性及多样性</li>
+				<li>组织结构</li>
+				<li>投资者关系</li>
+			</ul>
+		</div>
+	</div>
+</body>
+<style lang="en">
+	* {
+		list-style: none;
+		text-decoration: none;
+	}
+
+	.title {
+		font-size: 40px;
+		color: rgb(27, 118, 53);
+		text-align: center;
+		font-weight: bold;
+	}
+
+	.startTest {
+		padding-top: 20px;
+		text-align: center;
+	}
+
+	.butESG {
+		width: 200px;
+		height: 50px;
+		background-color: rgb(212, 235, 175);
+		font-size: 25px;
+		font-weight: bold;
+		border-radius: 25px;
+		border: 0px;
+		color: rgb(27, 118, 53);
+	}
+
+	.content {
+		padding-top: 30px;
+		text-align: center;
+		width: 100%;
+	}
+
+	.contentTest {
+		display: inline-block;
+		float: left;
+		width: 33%;
+		height: 100%;
+	}
+
+	.contentTestUl {
+		font-size: 20px;
+		font-weight: bold;
+		padding-top: 3px;
+	}
+
+	li {
+		padding-top: 10px;
+	}
+</style>
+<script>
+	function gotoESTtest() {
+		window.location.href = "production2ESG/ESGtest.html";
+	}
+</script>
+
+</html>

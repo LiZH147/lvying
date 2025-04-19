@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/productionForm.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+	<script src="js/icon.js"></script>
+</head>
+
+<body>
+	<div class="top">
+		<div>
+			<a href="index.html">
+				<img src="../img/Company Name1.jpg" alt="" class="topLogo">
+			</a>
+		</div>
+		<div class="topTable">
+			<form action="" method="submit()" name="form">
+				基本信息<a style="margin-left: 22px;color: red; font-size: 20px;">*</a> <input type="text"
+					name="companyName" placeholder="请输入公司名称" required />
+				&nbsp;
+
+				<select id='Year' name="year" style="margin-left: 22px;">
+					<option value=''>请选择年份</option>
+				</select>
+
+				<select id='Month' name="month" style="margin-left: 22px;">
+					<option value=''>请选择月份</option>
+				</select>
+
+				<a style="margin-left: 22px;color: red; font-size: 20px;">*</a><select id='Province' name="province"
+					onchange="showRegion()">
+					<option value=''>请选择省份(必填)</option>
+				</select>
+
+				<input id="Region" placeholder="" style="margin-left: 22px;" readonly onfocus=this.blur()>
+
+				<br />
+
+				<div class="row2">
+					联系方式
+					<input type="tel" placeholder="请输入手机号码(选填)" name="tel" style="margin-left: 22px;" />
+					<input type="email" placeholder="请输入邮箱" name="email" style="margin-left: 22px;" />
+
+					<input type="button" value="确认" onclick="OK()" style="margin-left: 22px;" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+		function OK() {
+			submit();
+			if (user.province != '') {
+				// console.log(user.region)
+				let showRight = 'auto';
+				$("#right").css("pointer-events", showRight);
+				$("#right").css("background", "rgb(255, 255, 255)");
+				$("#right").css("opacity", 1)
+				let power1 = document.getElementById("power1")
+				power1.setAttribute("placeholder", "请输入电力消耗");
+			}
+
+		}
+	</script>
+	<div class="bottom">
+		<a href="http://47.115.207.174:3000">
+			<div id="customer-service-btn">
+				<i class="fas fa-headset"></i>
+				<br />
+				<span
+					style="text-align:center; color: white; font-size: 20px; padding-bottom: 10px;">&nbsp;&nbsp;&nbsp;客服</span>
+			</div>
+		</a>
+		<hr />
+		<div class="left">
+			<div class="title">
+				<h2>核算维度</h2>
+			</div>
+
+			<hr />
+			<div class="range1">
+				<form action="">
+					<a href="#table1" style="color: black;text-decoration: none;">
+						<ul>
+							<h3>预生产阶段</h3>
+							<li>剧本纸张使用情况</li>
+							<li>电脑设备电力消耗情况</li>
+							<li>实地考察时使用交通工具消耗的燃油量</li>
+							<li>道具、服装等制作材料的来源和制作过程</li>
+						</ul>
+					</a>
+
+					<hr />
+
+					<a href="#table2" style="color: black;text-decoration: none;">
+						<ul>
+							<h3>拍摄阶段</h3>
+							<li>拍摄地点的电力消耗情况</li>
+							<li>拍摄期间剧组人员的交通工具类型及燃油量</li>
+							<li>拍摄过程中道具使用以及搭建场景舞台所产生的能源消耗</li>
+						</ul>
+					</a>
+
+					<hr />
+
+					<a href="#table3" style="color: black;text-decoration: none;">
+						<ul>
+							<h3>后期制作阶段</h3>
+							<li>后期制作过程中电力消耗</li>
+							<li>后期制作团队使用交通工具消耗的燃油量</li>
+						</ul>
+					</a>
+
+					<hr />
+
+					<a href="#table4" style="color: black;text-decoration: none;">
+						<ul>
+							<h3>废弃处理阶段</h3>
+							<li>废弃物类型以及数量</li>
+							<li>废弃物处理过程的能源消耗</li>
+						</ul>
+					</a>
+				</form>
+			</div>
+		</div>
+
+		<div class="right" style="pointer-events:none;" id="right">
+			<div>
+				<img src="../img/production1cal.png" style="width: 100%;">
+			</div>
+			<hr /><!-- 
+				<div class="AD">
+					购入使用电量<input id="usedPower" placeholder="请输入购入使用电量" />
+				</div> -->
+			<h3 id="table1">预生产阶段</h3>
+			<table class="table1" border="1" cellspacing="0"
+				style="text-align: left; width: 100%;background-color: rgb(237, 242, 240);">
+				<form action="">
+					<tr>
+						<th rowspan="">类型</th>
+						<th style="background-color: rgb(217, 237, 227);">消耗量</th>
+						<th>CO<sub>2</sub>排放量/t</th>
+					</tr>
+					<tr>
+						<th>
+							<h4>纸张的使用情况（以A4纸为例）</h4>
+						</th>
+						<th style="background-color: rgb(217, 237, 227);"><input id="paper" placeholder="请输入消耗的张数"
+								oninput="showPaperCO2(this.value)" style="border-style:none" /></th>
+						<th id="paperCO2"></th>
+					</tr>
+					<tr>
+						<th>
+							<h4>电力消耗情况(单位：MWh)</h4>
+						</th>
+						<th style="background-color: rgb(217, 237, 227);"><input id="power1" placeholder="请先选择省份"
+								oninput="showPowerCO2(this.value, 1)" /></th>
+						<th id="power1CO2"></th>
+					</tr>
+					<tr>
+						<th rowspan="2">
+							<h4>消耗燃油量（单位：t）</h4>
+						</th>
+						<th style="font-weight: 400;background-color: rgb(217, 237, 227);">
+							汽油&nbsp;&nbsp;&nbsp;&nbsp;<input id="gasoline1" placeholder="请输入汽油消耗量"
+								oninput="showgasolineCO2(this.value, 1)" /></th>
+						<th id="gasoline1CO2"></th>
+					</tr>
+					<tr>
+						<th style="font-weight: 400;background-color: rgb(217, 237, 227);">
+							柴油&nbsp;&nbsp;&nbsp;&nbsp;<input id="dieselOil1" placeholder="请输入柴油消耗量"
+								oninput="showdieselOilCO2(this.value, 1)" /></th>
+						<th id="dieselOil1CO2"></th>
+					</tr>
+					<tr>
+						<th rowspan="3">
+							<h4>道具、服装等材料来源（单位：t）</h4>
+						</th>
+						<th style="font-weight: 400;background-color: rgb(217, 237, 227);">
+							钢铁&nbsp;&nbsp;&nbsp;&nbsp;<input id="steel" placeholder="请输入钢铁消耗量"
+								oninput="showsteelCO2(this.value)" /></th>
+						<th id="steelCO2"></th>
+					</tr>
+					<tr>
+						<th style="font-weight: 400;background-color: rgb(217, 237, 227);">
+							塑料&nbsp;&nbsp;&nbsp;&nbsp;<input id="plastics" placeholder="请输入塑料消耗量"
+								oninput="showplasticsCO2(this.value)" /></th>
+						<th id="plasticsCO2"></th>
+					</tr>
+					<tr>
+						<th style="font-weight: 400;background-color: rgb(217, 237, 227);">
+							木材&nbsp;&nbsp;&nbsp;&nbsp;<input id="wood" placeholder="请输入木材消耗量"
+								oninput="showwoodCO2(this.value)" /></th>
+						<th id="woodCO2"></th>
+					</tr>
+
+				</form>
+			</table>
+
+			<hr />
+			<h3 id="table2">拍摄阶段</h3>
+			<table class="table2" border="1" cellspacing="0"
+				style="text-align: left; width: 100%; background-color: rgb(237, 242, 240);">
+				<form action="">
+					<tr>
+						<th>类型</th>
+						<th style="background-color: rgb(217, 237, 227);">消耗量</th>
+						<th>CO<sub>2</sub>排放量/t</th>
+					</tr>
+					<tr>
+						<th>
+							<h4>电力消耗情况(单位：MWh)</h4>
+						</th>
+						<th style="background-color: rgb(217, 237, 227);"><input id="power2" placeholder="请输入电力消耗"
+								oninput="showPowerCO2(this.value, 2)" /></th>
+						<th id="power2CO2"></th>
+					</tr>
+					<tr>
+						<th rowspan="2">
+							<h4>消耗燃油量（单位：t）</h4>
+						</th>
+						<th style="font-weight: 400;background-color: rgb(217, 237, 227);">
+							汽油&nbsp;&nbsp;&nbsp;&nbsp;<input id="gasoline2" placeholder="请输入汽油消耗量"
+								oninput="showgasolineCO2(this.value, 2)" /></th>
+						<th id="gasoline2CO2"></th>
+					</tr>
+					<tr>
+						<th style="font-weight: 400;background-color: rgb(217, 237, 227);">
+							柴油&nbsp;&nbsp;&nbsp;&nbsp;<input id="dieselOil2" placeholder="请输入柴油消耗量"
+								oninput="showdieselOilCO2(this.value, 2)" /></th>
+						<th id="dieselOil2CO2"></th>
+					</tr>
+				</form>
+			</table>
+
+			<hr />
+			<h3 id="table3">后期制作阶段</h3>
+			<table class="table2" border="1" cellspacing="0"
+				style="text-align: left; width: 100%;background-color: rgb(237, 242, 240);">
+				<form action="">
+					<tr>
+						<th rowspan="">类型</th>
+						<th style="background-color: rgb(217, 237, 227);">消耗量</th>
+						<th>CO<sub>2</sub>排放量/t</th>
+					</tr>
+					<tr>
+						<th>
+							<h4>电力消耗情况(单位：MWh)</h4>
+						</th>
+						<th style="background-color: rgb(217, 237, 227);"><input id="power3" placeholder="请输入电力消耗"
+								oninput="showPowerCO2(this.value, 3)" /></th>
+						<th id="power3CO2"></th>
+					</tr>
+					<tr>
+						<th rowspan="2">
+							<h4>消耗燃油量（单位：t）</h4>
+						</th>
+						<th style="font-weight: 400;background-color: rgb(217, 237, 227);">
+							汽油&nbsp;&nbsp;&nbsp;&nbsp;<input id="gasoline3" placeholder="请输入汽油消耗量"
+								oninput="showgasolineCO2(this.value, 3)" /></th>
+						<th id="gasoline3CO2"></th>
+					</tr>
+					<tr>
+						<th style="font-weight: 400;background-color: rgb(217, 237, 227);">
+							柴油&nbsp;&nbsp;&nbsp;&nbsp;<input id="dieselOil3" placeholder="请输入柴油消耗量"
+								oninput="showdieselOilCO2(this.value, 3)" /></th>
+						<th id="dieselOil3CO2"></th>
+					</tr>
+				</form>
+			</table>
+
+
+			<hr />
+			<h3 id="table4">废弃物处理阶段</h3>
+
+			<div class="bottomButton">
+				<button onclick="showRes()"
+					style="width: 150px;height: 50px; font-size:20px;background-color:rgb(122, 194, 160); color:white;border:none;border-radius:5px">计算结果</button>
+			</div>
+		</div>
+	</div>
+</body>
+
+<style>
+	body {
+		overflow: hidden;
+	}
+
+	th>input {
+		border-style: none;
+	}
+
+	.top {
+		width: 100%;
+		height: 80px;
+		/* 
+			padding-top: 10px;
+			padding-left: 200px; */
+	}
+
+	.topLogo {
+		display: inline-block;
+		float: left;
+	}
+
+	.topTable {
+		display: inline-block;
+		padding-top: 20px;
+		padding-left: 50px;
+		;
+
+	}
+
+	.row2 {
+		padding-top: 10px;
+	}
+
+	.bottom {
+		width: 100%;
+		height: 100%;
+	}
+
+	.left {
+		float: left;
+		/* 左浮动 */
+		width: 25%;
+		/* 宽度为页面的一半 */
+		height: 600px;
+		box-sizing: border-box;
+		/* 包含边框和内边距 */
+		padding: 10px;
+		/* 内边距 */
+		border: 1px solid #ccc;
+		/* 边框 */
+		overflow: scroll;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		/* 滚动条 */
+	}
+
+	.right {
+		float: right;
+		/* 左浮动 */
+		width: 75%;
+		/* 宽度为页面的一半 */
+		height: 600px;
+		box-sizing: border-box;
+		/* 包含边框和内边距 */
+		padding: 10px;
+		/* 内边距 */
+		border: 1px solid #ccc;
+		/* 边框 */
+		background: rgba(0, 0, 0, 0.5);
+		opacity: 0.5;
+		overflow: scroll;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+
+	.rightTable {
+		margin-top: 10px;
+		width: 100%;
+		height: 50px;
+	}
+
+	td>input {
+		border: 0;
+	}
+
+	.bottomButton {
+		position: absolute;
+		right: 25px;
+		bottom: 15px;
+	}
+
+	#customer-service-btn {
+		position: fixed;
+		top: 10px;
+		right: 5px;
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		background-color: rgb(159, 211, 186);
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+		cursor: pointer;
+		transition: all 0.2s ease-in-out;
+	}
+
+	#customer-service-btn:hover {
+		transform: scale(1.05);
+	}
+
+	#customer-service-btn i {
+		text-align: center;
+		color: #fff;
+		font-size: 20px;
+		margin-top: 16px;
+		margin-left: 25px;
+	}
+</style>
+<script>
+</script>
+
+</html>

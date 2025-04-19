@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>问卷详情</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        {% if forms %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>联系方式</th>
+                    <th>处理状态</th>
+                    <th>提交时间</th>
+                    <th>处理时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for form in forms %}
+                <tr>
+                    <td>{{ form.id }}</td>
+                    <td>{{ form.contact_information }}</td>
+                    <td>
+                        {% if form.processing_status == 0 %}
+                        处理中
+                        {% elif form.processing_status == 1 %}
+                        已处理
+                        {% endif %}
+                    </td>
+                    <td>{{ form.submission_time }}</td>
+                    <td>
+                        {% if form.processing_status == 1 %}
+                        {{ form.processing_time }}
+                        {% else %}
+                        请耐心等待
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% for form in forms %}
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">问卷内容</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="序号">序号</th>
+                            
+                            <th scope="col">问题</th>
+                            <th scope="col">回答</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for answer in form.answer %}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            
+                            <td>{{ answer.question }}</td>
+                            <td>{{ answer.content }}</td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    </table>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">推荐结果</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="序号">序号</th>
+                            <th scope="col">名称</th>
+                            <th scope="col">类型</th>
+                            <th scope="col">地址</th>
+                            <th scope="col">建筑风格</th>
+                            <th scope="col">取景影视</th>
+                            <th scope="col">推荐指数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for recommendation in recommendations %}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            <td>{{ recommendation.Name }}</td>
+                            <td>{{ recommendation.Type }}</td>
+                            <td>{{ recommendation.Position }}</td>
+                            <td>{{ recommendation.Architectural_Design }}</td>
+                            <td>{{ recommendation.Composition }}</td>
+                            <td>
+                                <div class="star-rating" data-rating="{{ recommendation.Id }}" data-base-id="{{ recommendation.Id }}" {% if not
+                                    recommendation.is_selected %} style="pointer-events:none;" {% endif %}>
+                                    {% for i in range(0, recommendation.Recommendations) %}
+                                    <span class="star">&#9733;</span>
+                                    {% endfor %}
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <style>
+            .star {
+                color: #f6e58d;
+                font-size: 20px;
+            }
+        </style>
+        <!--<div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">留言</h5>
+                <ul class="list-group">
+                    {% for recommendation in recommendations %}
+                    <li class="list-group-item">{{ recommendation}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>-->
+        {% endfor %}
+        {% else %}
+        <div class="alert alert-warning" role="alert">
+            暂未查询到相关数据
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
